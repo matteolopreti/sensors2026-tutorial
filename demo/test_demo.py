@@ -2,6 +2,7 @@
 exposes its own (metric asserted present); a planted defect is flagged; V3 frame loss depends on start phase."""
 import functools
 
+import numpy as np
 import pytest
 
 import loops
@@ -90,3 +91,12 @@ def test_v4_loses_no_frame(seed, phase_ms):  # frames arriving after the last co
 
 def test_v0_hysteresis_not_measurable(sheets):  # V0 logs one point per step: no branch to fit
     assert sheets["V0"][0]["hysteresis_pct"] != sheets["V0"][0]["hysteresis_pct"]  # NaN = n/a
+
+
+def test_run_writes_truth_and_ramps_beside_log(tmp_path):
+    rig = demo.build_rig("t", 1, v=2.0, tau_relax=1.5, tau_sensor=0.05, out=tmp_path)
+    log = demo.run(loops.v4_double_tick, rig, [1.0, 0.0], 0.5)
+    truth, ramps = (np.loadtxt(tmp_path / f"t_{n}.csv", delimiter=",", skiprows=1, ndmin=2) for n in ("truth", "ramps"))
+    t = np.array(log)[:, 0]
+    assert np.allclose(truth, rig.world.truth) and np.allclose(ramps, rig.world.ramps)
+    assert truth[0, 0] <= t[0] and truth[-1, 0] >= t[-1]

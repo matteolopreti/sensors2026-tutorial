@@ -4,6 +4,7 @@
 \setmainfont{Helvetica Neue}
 \setmonofont[Scale=0.85,Ligatures=NoCommon]{Menlo}
 \usepackage{tabularx,booktabs,array,enumitem,xcolor}
+\usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
@@ -11,7 +12,7 @@
 \setlist{nosep,leftmargin=*}
 \definecolor{ink}{HTML}{1F3A5F}
 \newcommand{\hsec}[1]{\par\vspace{3pt}{\large\bfseries\color{ink}#1}\par\vspace{1pt}}
-\newcommand{\qr}{\texttt{[QR]}}
+\newcommand{\qr}{link on the tutorial page, QR below}
 \begin{document}
 {\LARGE\bfseries\color{ink} One loop, five versions}\\[1pt]
 {\small IEEE SENSORS 2026 tutorial, Sunday 25 October: From Na\"ive Loops to FAIR Datasheets}
@@ -26,9 +27,9 @@ One simulated soft sensor, one indentation staircase, one acquisition loop. Each
 \midrule
 V0 & Blocking move, then sleep & Nothing is logged during ramps and holds. \\
 V1 & Non-blocking polling & Coverage is fixed. Disk stalls give jitter (p99 about 60 ms). \\
-V2 & Threads and a first-in, first-out queue & Jitter is fixed. Rows are stamped when read, so they lag the true time by 14 to 21 ms. At an unlucky start phase it loses about a third of the frames, and its log cannot show it. \\
+V2 & Threads and a first-in, first-out queue & Jitter is fixed. Rows are stamped when read, so they lag the true time by 13.5 to 21.5 ms. At an unlucky start phase it loses about a third of the frames, and its log cannot show it. \\
 V3 & Stamp at frame time, add a sequence number & Lag drops to about 0. The loss is now visible in the log. \\
-V4 & Coordinator tick at 2$\times$ the frame rate & Loss is at most 1.2\,\% at any start phase, and every lost frame shows in the log. \\
+V4 & Coordinator tick at 2$\times$ the frame rate & Loss is 0\,\% at every start phase in the frozen run (an earlier run lost up to 1.2\,\%, so timing still matters), and every lost frame shows in the log. \\
 \bottomrule
 \end{tabularx}
 
@@ -47,7 +48,7 @@ Whatever the testing path does not record, no analysis can recover. A test that 
 \begin{itemize}
 \item The sensor and the disk are simulated. The disk-stall model is an assumption, so the jitter figures show the shape of the problem, not your disk.
 \item Laptop, operating system and system timer change when threads wake up, so the same code gives different jitter and different loss.
-\item The start phase matters most. The loss in V2 ranges from 0 to 38\,\% as the start offset moves from 0 to 18 ms. Press Start a few milliseconds later and you get a different datasheet.
+\item The start phase matters most. The loss in V2 ranges from 0 to 34.1\,\% as the start offset moves from 0 to 18 ms. Press Start a few milliseconds later and you get a different datasheet.
 \item The slides show the full-length run. \texttt{--fast} is shorter, so its numbers carry more edge effects.
 \end{itemize}
 Compare V2 and V4 on your own machine, then write your two loss figures below.
@@ -58,4 +59,9 @@ Compare V2 and V4 on your own machine, then write your two loss figures below.
 Operating system: & \hrulefill & CPU: & \hrulefill \\
 V2 loss (\%): & \hrulefill & V4 loss (\%): & \hrulefill \\
 \end{tabularx}
+
+\vspace{4pt}
+\noindent\includegraphics[width=2.5cm]{../qr/landing.png}\hfill
+\parbox[c]{\dimexpr\linewidth-3cm}{\textbf{Demo, handout, sources: scan or visit}\\
+\texttt{https://claude.ai/artifact/2mrHgNaJrZLdJKoNr26FrE}}
 \end{document}

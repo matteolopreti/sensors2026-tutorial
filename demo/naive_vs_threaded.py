@@ -151,6 +151,9 @@ def run(loop, rig, targets, dwell, **kw):
     rig.world.sample()  # integrate truth to the end of the run
     rig.t_end = rig.world.now()  # protocol end (dwell windows); frame counting uses rig.t_stop, set by the loop
     rig.disk.f.close()
+    stem = rig.disk.f.name.removesuffix("_log.csv")  # ground truth beside the log
+    np.savetxt(f"{stem}_truth.csv", rig.world.truth, delimiter=",", header="t,force,sensor", comments="")
+    np.savetxt(f"{stem}_ramps.csv", rig.world.ramps, delimiter=",", header="t0,t1,dir", comments="")
     return log
 
 

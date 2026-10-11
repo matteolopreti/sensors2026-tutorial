@@ -1,0 +1,7 @@
+__pycache__/
+.ruff_cache/
+.pytest_cache/
+*.pyc
+demo/out/*
+!demo/out/freeze/
+.DS_Store

@@ -46,7 +46,3 @@ The sensor, the test rig and the slow disk are simulated. The loops, Python's th
 - `kit/handout/handout.pdf`: the one-page handout with the checks for your own rig.
 - Tests: `cd demo && uv run --with pytest --with numpy --with matplotlib python -m pytest -q`
 - The paper: [doi.org/10.1002/aisy.70436](https://doi.org/10.1002/aisy.70436). The framework: [tactile_characterization_framework](https://github.com/matteolopreti/tactile_characterization_framework).
-
-Found a bug or got a different result? Open an issue. I would like to see it.
-
-Matteo Lo Preti

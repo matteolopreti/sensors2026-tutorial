@@ -1,0 +1,33 @@
+phase sweep, seed 2: coordinator tick offset vs sensor frame clock (frame arrives at +4 ms)
+ version phase_ms  lost_true_%  lost_visible_%   lag_ms
+      V2        0        11.92             n/a     21.5
+      V2        2        22.04             n/a       20
+      V2        4        35.01             n/a     18.5
+      V2        6        20.95             n/a       15
+      V2        8        10.78             n/a     14.5
+      V2       10        3.932             n/a     14.5
+      V2       12        0.666             n/a     15.5
+      V2       14            0             n/a     17.5
+      V2       16       0.7609             n/a     19.5
+      V2       18        4.155             n/a     20.5
+      V3        0        10.88           10.88      7.5
+      V3        2        22.01              22      6.5
+      V3        4         34.2            34.2      7.5
+      V3        6        14.79           14.78        6
+      V3        8        1.016           1.015        7
+      V3       10            0               0        6
+      V3       12      0.03174         0.03173      6.5
+      V3       14            0               0        6
+      V3       16            0               0        6
+      V3       18            0               0        6
+      V4        0            0               0        7
+      V4        2       0.1269          0.1269      7.5
+      V4        4            0               0        8
+      V4        6            0               0        8
+      V4        8            0               0        7
+      V4       10            0               0        6
+      V4       12            0               0        6
+      V4       14            0               0        6
+      V4       16            0               0      5.5
+      V4       18            0               0        6
+longest wake-up stall: 25 ms (V3, phase 12 ms)

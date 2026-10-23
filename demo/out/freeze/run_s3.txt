@@ -1,0 +1,32 @@
+V0 v0_naive: 84.7 s wall
+V1 v1_polling: 63.6 s wall
+V2 v2_threaded: 63.4 s wall
+V3 v3_stamped_at_read: 63.3 s wall
+V4 v4_double_tick: 63.3 s wall
+
+coordinator phase (V2-V4): 4 ms after the frame clock origin
+metric                     truth        V0        V1        V2        V3        V4
+samples                6.313e+04        12      2930      3157      3157      3155
+rate_Hz                     1000     0.142     46.21     50.01     50.01     49.99
+dt_p50_ms                      1      7040     19.99     19.81     19.84     19.98
+dt_p99_ms                      1      7077     61.81     28.91     28.97     32.08
+dt_max_ms                      1      7081     67.94     29.92     29.85     34.43
+ramp_samples               6e+04         0      2774      3000      2999      2999
+dwell_samples_min            508         1        21        25        25        25
+force_fs_N                 4.512     3.794      4.54     4.529     4.509     4.512
+relaxation_pct_fs          6.306       n/a     6.037     6.207     6.268     6.201
+sensitivity_V_per_N       0.4098       n/a    0.4092    0.4095    0.4101    0.4095
+hysteresis_pct             2.929       n/a     2.233     4.005     3.968     3.811
+sensor_repeat_pct              0         0         0     35.08     35.13         0
+sensor_force_lag_ms            0       n/a     -11.5      18.5         7         7
+frames_lost_true_pct           0     99.72     7.573     35.03      35.1         0
+frames_lost_visible_pct         0       n/a       n/a       n/a      35.1         0
+hysteresis_pct: noise-level, not checked
+longest wake-up stall: 19 ms (V2)
+bug exposed (failed checks vs truth):
+  V0: no ramps, <10 dwell samples, jitter p99>2T, frames lost>1%, lag>5ms, full-scale>5%, relaxation>20%, sensitivity>5%
+  V1: jitter p99>2T, frames lost>1%, lag>5ms
+  V2: frames lost>1%, lag>5ms
+  V3: frames lost>1%, lag>5ms
+  V4: lag>5ms
+plots -> /private/tmp/claude-501/w-T19u-kHAZxK/r/demo/out/freeze/s3

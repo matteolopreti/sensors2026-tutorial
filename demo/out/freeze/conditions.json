@@ -1,0 +1,47 @@
+[
+ {
+  "run": "seed 1",
+  "attempt": 1,
+  "load_start": 5.34033203125,
+  "load_end": 3.63818359375,
+  "stall_ms": 28.0,
+  "stall_where": "V0",
+  "used": true
+ },
+ {
+  "run": "seed 2",
+  "attempt": 1,
+  "load_start": 3.63818359375,
+  "load_end": 4.1650390625,
+  "stall_ms": 23.0,
+  "stall_where": "V0",
+  "used": true
+ },
+ {
+  "run": "seed 3",
+  "attempt": 1,
+  "load_start": 4.1650390625,
+  "load_end": 3.35302734375,
+  "stall_ms": 19.0,
+  "stall_where": "V2",
+  "used": true
+ },
+ {
+  "run": "phase sweep",
+  "attempt": 1,
+  "load_start": 3.35302734375,
+  "load_end": 4.42236328125,
+  "stall_ms": 25.0,
+  "stall_where": "V3, phase 12 ms",
+  "used": true
+ },
+ {
+  "run": "lanes 4-6",
+  "attempt": 1,
+  "load_start": 4.42236328125,
+  "load_end": 3.2626953125,
+  "stall_ms": 11.0,
+  "stall_where": "lanes 4-6",
+  "used": true
+ }
+]
